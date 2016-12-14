@@ -1,0 +1,24 @@
+compelling_threshold: 0.5
+description: Beeradvocate, better/worse, hotel importance
+es_host: http://localhost:9200/
+es_port: 9200
+explanation_index: ba-bw-himp-explanations
+extractions_csv_file: data/beeradvocate/extractions.csv
+item_ids_csv_file: data/beeradvocate/item_ids.csv
+item_index: ba-bw-himp-items
+items_csv_file: data/beeradvocate/items.csv
+logstash_dir: ./
+min_session_length: 10
+mongo_port: 28200
+output_dir: outputs/data/beeradvocate/bwhi/
+rec_index: ba-bw-himp-rec
+recommendation_size: 9
+recommendations_csv_file: data/beeradvocate/recommendations.csv
+redis_port: 6379
+redis_swap: ./redis.swap
+sentiment_threshold: 0.7
+session_index: ba-bw-himp-sessions
+short_name: ba-bw-himp
+strength_function: bwhi
+user_ids_csv_file: data/beeradvocate/user_ids.csv
+user_index: ba-bw-himp-users
