@@ -6,7 +6,7 @@ import pandas as pd
 import numpy as np
 from scipy import stats
 import matplotlib as mpl
-from IPython.display import display
+from IPython.display import display, set_matplotlib_formats
 import matplotlib.pyplot as plt
 
 LOG_FORMAT = '[%(asctime)s] %(levelname)s: %(message)s \n\t%(module)s:%(funcName)s:%(lineno)s'
@@ -16,12 +16,20 @@ logging.getLogger('sqlalchemy.engine').setLevel(logging.WARNING)
 logging.getLogger('elasticsearch').setLevel(logging.WARNING)
 # logging.getLogger('elasticsearch').setLevel(logging.DEBUG)
 
+
+set_matplotlib_formats('pdf', 'png')
+plt.rcParams['savefig.dpi'] = 300
+plt.rcParams['savefig.bbox'] = "tight"
+plt.rcParams['image.cmap'] = 'Set3'
+plt.rcParams['image.interpolation'] = "none"
+np.set_printoptions(precision=3)
+pd.set_option('precision', 3)
+mpl.rcParams['pdf.fonttype'] = 42
+mpl.rcParams['ps.fonttype'] = 42
+#plt.rcParams["font.family"] = 'Merriweather Sans, Ubuntu'
+mpl.rcParams['xtick.labelsize'] = 'small' 
+mpl.rcParams['ytick.labelsize'] = 'small' 
+
 log = logging.getLogger()
 
-def get_config_paths(directory):
-    """Gets a list of all configuration file paths in a given directory"""
-    config_paths = []
-    for config_path in glob('{}/*.yml'.format(directory)):
-        config_paths.append(os.path.realpath(config_path))
-    log.info('Loaded %d configuration paths' % len(config_paths))
-    return config_paths
+
